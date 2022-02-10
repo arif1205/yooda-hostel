@@ -34,7 +34,7 @@ const ShowFoodModal = ({ food, openModal, setOpenModal, setChangeApi }) => {
       );
       // insert data to database
       await axios.put(
-        `http://localhost:4000/food/${food._id}`,
+        `https://yooda-hostel-12.herokuapp.com/food/${food._id}`,
         foodValidateData
       );
       setChangeApi((prevState) => !prevState);

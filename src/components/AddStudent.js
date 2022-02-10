@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import StudentSchema from "../Schema/StudentSchema";
 
 const AddStudent = ({ setChangeApi }) => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   // submit form
   const onSubmit = async (data) => {
@@ -14,12 +14,13 @@ const AddStudent = ({ setChangeApi }) => {
       // validate the data
       const studentValidateData = await StudentSchema.validateAsync(studentData);
       // insert data to database
-      await axios.post("http://localhost:4000/students", studentValidateData);
+      await axios.post("https://yooda-hostel-12.herokuapp.com/students", studentValidateData);
       alert("Successfully added a new student");
     } catch (err) {
       alert(err.message);
     } finally {
       setChangeApi((prevState) => !prevState);
+      reset();
     }
   };
 

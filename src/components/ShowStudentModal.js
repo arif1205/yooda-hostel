@@ -56,7 +56,7 @@ const ShowStudentModal = ({
       );
       // insert data to database
       await axios.put(
-        `http://localhost:4000/students/${student._id}`,
+        `https://yooda-hostel-12.herokuapp.com/students/${student._id}`,
         studentValidateData
       );
       setChangeApi((prevState) => !prevState);

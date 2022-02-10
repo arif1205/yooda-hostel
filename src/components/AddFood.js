@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import FoodSchema from "../Schema/FoodSchema";
 
 const AddFood = ({setChangeApi}) => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   // submit form
   const onSubmit = async (data) => {
@@ -15,7 +15,7 @@ const AddFood = ({setChangeApi}) => {
       const foodValidateData = await FoodSchema.validateAsync(foodData);
       // insert data to database
       await axios.post(
-        "http://localhost:4000/food",
+        "https://yooda-hostel-12.herokuapp.com/food",
         foodValidateData
       );
       alert('Successfully added food');
@@ -23,6 +23,7 @@ const AddFood = ({setChangeApi}) => {
       alert(err.message);
     } finally {
       setChangeApi((prevState) => !prevState);
+      reset();
     }
   };
 

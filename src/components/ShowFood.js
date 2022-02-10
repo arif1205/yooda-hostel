@@ -17,7 +17,7 @@ const ShowFood = ({ changeApi, setChangeApi }) => {
       try {
         setLoading(true);
         const response = await axios.get(
-          `http://localhost:4000/food?_page=${currentPage + 1}&_limit=${Number(
+          `https://yooda-hostel-12.herokuapp.com/food?_page=${currentPage + 1}&_limit=${Number(
             limit
           )}`
         );
@@ -60,7 +60,7 @@ const ShowFood = ({ changeApi, setChangeApi }) => {
     });
     try {
       selectedFoodsId.forEach(async (v) => {
-        await axios.delete(`http://localhost:4000/food/${v._id}`);
+        await axios.delete(`https://yooda-hostel-12.herokuapp.com/food/${v._id}`);
       });
       alert("Successfully Deleted food");
     } catch (err) {

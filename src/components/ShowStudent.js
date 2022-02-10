@@ -17,7 +17,7 @@ const ShowStudent = ({ changeApi, setChangeApi }) => {
       try {
         setLoading(true);
         const response = await axios.get(
-          `http://localhost:4000/students?_page=${
+          `https://yooda-hostel-12.herokuapp.com/students?_page=${
             currentPage + 1
           }&_limit=${Number(limit)}`
         );
@@ -69,7 +69,7 @@ const ShowStudent = ({ changeApi, setChangeApi }) => {
     });
     try {
       selectedStudentsId.forEach(async (v) => {
-        await axios.delete(`http://localhost:4000/students/${v._id}`);
+        await axios.delete(`https://yooda-hostel-12.herokuapp.com/students/${v._id}`);
       });
       alert("Successfully Deleted students");
     } catch (err) {
@@ -85,7 +85,7 @@ const ShowStudent = ({ changeApi, setChangeApi }) => {
     try {
       selectedStudents.forEach(async (v) => {
         await axios.put(
-          `http://localhost:4000/students/${v.id.split("student-").join("")}`,
+          `https://yooda-hostel-12.herokuapp.com/students/${v.id.split("student-").join("")}`,
           updatedData
         );
       });
